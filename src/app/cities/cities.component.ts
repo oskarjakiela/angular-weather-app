@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from './../city';
+import { CITIES } from './../mock-cities';
 
 @Component({
   selector: 'app-cities',
@@ -7,14 +8,16 @@ import { City } from './../city';
   styleUrls: ['./cities.component.css']
 })
 export class CitiesComponent implements OnInit {
-  city: City = {
-    id: 2643743,
-    name: 'London',
-  };
+  cities = CITIES;
+
+  selectedCity: City;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSelect(city: City): void {
+    this.selectedCity = city;
+  }
 }

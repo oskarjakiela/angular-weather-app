@@ -1,3 +1,14 @@
-<h2>{{ city.name | uppercase }} Details</h2>
-<div><span>id: </span>{{city.id}}</div>
-<div><span>name: </span>{{city.name}}</div>
+<h2>Cities</h2>
+<ul class="cities">
+  <li *ngFor="let city of cities"
+    [class.selected]="city === selectedCity"
+    (click)="onSelect(city)"
+  >
+    <span>{{city.name}}</span>
+
+    <div *ngIf="city === selectedCity">
+      <h2>{{ city.name | uppercase }} Details</h2>
+      <div><span>id: </span>{{city.id}}</div>
+    </div>
+  </li>
+</ul>
