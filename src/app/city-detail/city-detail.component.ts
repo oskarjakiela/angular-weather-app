@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { City } from './../city';
+import { Forecast } from './../forecast';
 import { CityService } from './../city.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CityService } from './../city.service';
   styleUrls: ['./city-detail.component.css']
 })
 export class CityDetailComponent implements OnInit {
-  city: City;
+  forecasts: Forecast[];
 
   constructor(
     private route: ActivatedRoute,
@@ -19,15 +19,15 @@ export class CityDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCity();
+    this.getForecasts();
   }
 
-  getCity(): void {
+  getForecasts(): void {
     this.route.paramMap
       .subscribe((params) => {
         const id = Number(params.get('id'));
-        this.cityService.getCity(id)
-          .subscribe(city => this.city = city);
+        this.cityService.getForecasts(id)
+          .subscribe(forecasts => this.forecasts = forecasts);
       });
   }
 

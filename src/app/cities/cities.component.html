@@ -4,7 +4,10 @@
     *ngFor="let city of cities"
   >
     <a [routerLink]="getCityUrl(city.id)">
-      <span>{{city.name}}</span>
+      <span>{{city.name}}</span><br />
+      <span>{{city.forecast.mainTemp | number:'.1-1'}} °C</span><br />
+      <span>{{city.forecast.windSpeed}} m/s</span><br />
+      <span>{{city.forecast.weatherDescription}}</span>
     </a>
   </li>
 </ul>

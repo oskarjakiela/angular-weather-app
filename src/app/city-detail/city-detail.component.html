@@ -1,6 +1,10 @@
-<div *ngIf="city">
-
-  <h2>{{ city.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{city.id}}</div>
-
+<div *ngIf="forecasts">
+  <div
+    *ngFor="let forecast of forecasts"
+  >
+    <span>{{forecast.datetime}}</span><br />
+    <span>{{forecast.mainTemp | number:'.1-1'}} °C</span><br />
+    <span>{{forecast.windSpeed}} m/s</span><br />
+    <span>{{forecast.weatherDescription}}</span>
+  </div>
 </div>
