@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CityService } from './../city.service';
 import { City } from './../city';
-import { CITIES } from './../mock-cities';
 
 @Component({
   selector: 'app-cities',
@@ -11,9 +12,10 @@ import { CITIES } from './../mock-cities';
 export class CitiesComponent implements OnInit {
   cities: City[];
 
-  selectedCity: City;
-
-  constructor(private cityService: CityService) { }
+  constructor(
+    private router: Router,
+    private cityService: CityService
+  ) {}
 
   ngOnInit() {
     this.getCities();
@@ -24,7 +26,14 @@ export class CitiesComponent implements OnInit {
         .subscribe(cities => this.cities = cities);
   }
 
-  onSelect(city: City): void {
-    this.selectedCity = city;
+  getCityUrl(id): string {
+    const url = `/cities/${id}`;
+
+    if (this.router.isActive(url, true)) {
+      return '/cities';
+    }
+
+    return url;
   }
+
 }

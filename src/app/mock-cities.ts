@@ -1,9 +1,9 @@
 import { City } from './city';
 
 export const CITIES: City[] = [
-  { id: 2643743, name: 'London' },
-  { id: 2950159, name: 'Berlin' },
-  { id: 3117735, name: 'Madrid' },
-  { id: 3169070, name: 'Roma' },
-  { id: 2988507, name: 'Paris' }
+  new City(2643743, 'London'),
+  new City(2950159, 'Berlin'),
+  new City(3117735, 'Madrid'),
+  new City(3169070, 'Roma'),
+  new City(2988507, 'Paris')
 ];

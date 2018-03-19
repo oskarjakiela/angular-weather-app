@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CitiesComponent } from './cities/cities.component';
 import { CityDetailComponent } from './city-detail/city-detail.component';
 import { CityService } from './city.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CityService } from './city.service';
     CityDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [CityService],
   bootstrap: [AppComponent]

@@ -2,14 +2,11 @@
 <ul class="cities">
   <li
     *ngFor="let city of cities"
-    [class.selected]="city === selectedCity"
-    (click)="onSelect(city)"
   >
-    <span>{{city.name}}</span>
-
-    <app-city-detail
-      *ngIf="city === selectedCity"
-      [city]="selectedCity"
-    ></app-city-detail>
+    <a [routerLink]="getCityUrl(city.id)">
+      <span>{{city.name}}</span>
+    </a>
   </li>
 </ul>
+
+<router-outlet></router-outlet>
