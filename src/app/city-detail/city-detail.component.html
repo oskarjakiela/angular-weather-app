@@ -1,10 +1,23 @@
-<div *ngIf="forecasts">
-  <div
-    *ngFor="let forecast of forecasts"
-  >
-    <span>{{forecast.datetime}}</span><br />
-    <span>{{forecast.mainTemp | number:'.1-1'}} °C</span><br />
-    <span>{{forecast.windSpeed}} m/s</span><br />
-    <span>{{forecast.weatherDescription}}</span>
-  </div>
+<div class="city-detail">
+  <h3 *ngIf="city">{{city.name}}</h3>
+
+  <mat-table #table *ngIf="forecasts" [dataSource]="forecasts">
+    <ng-container matColumnDef="datetime">
+      <mat-cell *matCellDef="let element"> {{element.datetime * 1000 | date:'EEEE, HH:mm'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="weatherDescription">
+      <mat-cell *matCellDef="let element"> {{element.weatherDescription | titlecase}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="mainTemp">
+      <mat-cell *matCellDef="let element"> {{element.mainTemp | number:'.1-1'}} °C </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="windSpeed">
+      <mat-cell *matCellDef="let element"> {{element.windSpeed | number:'.1-1'}} m/s </mat-cell>
+    </ng-container>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>

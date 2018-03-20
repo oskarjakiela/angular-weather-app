@@ -1,0 +1,28 @@
+.cities {
+  display: flex;
+  justify-content: center;
+}
+
+.cities__list-item {
+  margin-right: 24px;
+  width: 166px;
+  cursor: pointer;
+}
+
+.cities__list-item .mat-card:active,
+.cities__list-item .mat-card:focus {
+  outline: 0;
+}
+
+.cities__list-item:first-child {
+  margin-left: 24px;
+}
+
+.cities__content {
+  margin-top: 16px;
+}
+
+.cities__icon {
+  position: relative;
+  top: 6px;
+}

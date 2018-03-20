@@ -46,6 +46,11 @@ export class CityService {
     );
   }
 
+  getCity(id): Observable<City> {
+    const city = CITIES.find(city => city.id === id);
+    return of(new City(city.id, city.name));
+  }
+
   getForecasts(cityId: number): Observable<Forecast[]> {
     const url = this.getForecastUrl(cityId);
     return this.http.get<any>(url).pipe(

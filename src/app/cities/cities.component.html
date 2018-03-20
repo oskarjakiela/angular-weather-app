@@ -1,15 +1,29 @@
-<h2>Cities</h2>
-<ul class="cities">
-  <li
+<div class="cities">
+  <div
+    class="cities__list-item"
     *ngFor="let city of cities"
   >
-    <a [routerLink]="getCityUrl(city.id)">
-      <span>{{city.name}}</span><br />
-      <span>{{city.forecast.mainTemp | number:'.1-1'}} °C</span><br />
-      <span>{{city.forecast.windSpeed}} m/s</span><br />
-      <span>{{city.forecast.weatherDescription}}</span>
-    </a>
-  </li>
-</ul>
+    <mat-card [routerLink]="getCityUrl(city.id)">
+      <mat-card-header>
+        <mat-card-title>{{city.name}}</mat-card-title>
+        <mat-card-subtitle>{{city.forecast.weatherDescription | titlecase}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+
+      <mat-card-content class="cities__content">
+        <div>
+          <app-icon-thermometer class="cities__icon"></app-icon-thermometer>
+          {{city.forecast.mainTemp | number:'.1-1'}} °C
+        </div>
+
+        <div>
+          <app-icon-wind class="cities__icon"></app-icon-wind>
+          {{city.forecast.windSpeed | number:'.1-1'}} m/s
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 
 <router-outlet></router-outlet>

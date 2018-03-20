@@ -1,0 +1,9 @@
+.city-detail {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.city-detail h3 {
+  font-size: 20px;
+  text-align: center;
+}
